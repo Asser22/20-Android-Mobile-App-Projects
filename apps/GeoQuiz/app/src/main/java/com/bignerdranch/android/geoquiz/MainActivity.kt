@@ -1,14 +1,22 @@
 package com.bignerdranch.android.geoquiz
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputBinding
 import android.widget.Button
 import android.widget.Toast
+import com.bignerdranch.android.geoquiz.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
+private const val TAG = "MainActivity"
+private const val CURRENT_INDEX_KEY = "CURRENT_INDEX_KEY"
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
 
@@ -22,36 +30,40 @@ class MainActivity : AppCompatActivity() {
     )
     private var currentIndex = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        if (savedInstanceState != null) {
+            Log.d(TAG, "SavedInstanceState is set.")
+            currentIndex = savedInstanceState.getInt(CURRENT_INDEX_KEY, 0)
+        }
+        //setContentView(R.layout.activity_main)
 
-        trueButton = findViewById(R.id.true_button)
-        falseButton = findViewById(R.id.false_button)
+        binding = ActivityMainBinding.inflate(this.layoutInflater)
+        setContentView(binding.root)
 
-        // Lambda function SAM
-        trueButton.setOnClickListener { view: View ->
-            Toast.makeText(
-                this,
-                R.string.correct_toast,
-                Toast.LENGTH_SHORT)
-                .show()
+        binding.questionText.setText(questionBank[currentIndex].testResId)
+        binding.nextButton.setOnClickListener {
+            currentIndex = (currentIndex + 1) % questionBank.size
+            binding.questionText.setText(questionBank[currentIndex].testResId)
         }
 
-        trueButton.setOnClickListener { view: View ->
-            Snackbar.make(view,
-                R.string.correct_toast, Snackbar.LENGTH_SHORT).show()
-
-            //var snackbar = Snackbar.make(view, R.string.correct_toast, Snackbar.LENGTH_SHORT)
-            //snackbar.show()
+        fun checkAnswer(userAnswer: Boolean) {
+            val correctAnswer = questionBank[currentIndex].answer
+            var resId = if (userAnswer == correctAnswer) {
+                R.string.correct_toast
+            } else {
+                R.string.incorrect_toast
+            }
+            Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
         }
 
-        falseButton.setOnClickListener { view: View ->
-            Toast.makeText(
-                this,
-                R.string.incorrect_toast,
-                Toast.LENGTH_SHORT)
-                .show()
+        binding.trueButton.setOnClickListener {
+            checkAnswer(true)
+        }
+
+        binding.falseButton.setOnClickListener {
+            checkAnswer(false)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.raresmihailneagu.mulchapp
+package com.example.mulchapp
 
 import android.content.Intent
 import android.os.Bundle

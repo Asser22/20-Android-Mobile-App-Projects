@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mulch App</string>
+    <string name="price_per_cubic_yard">\$%.2f per cubic yard</string>
+    <string name="mulch_cost">Mulch Cost: $%.2f</string>
+    <string name="sales_tax">Sales Tax: $%.2f</string>
+    <string name="delivery_charge">Delivery Charge: \$%.2f</string>
+    <string name="total_cost">Total: \$%.2f</string>
+    <string name="invalid_input_message">Please ensure the quantity is specified and ZIP code is a 5-digit number</string>
+    <string name="delivery_unavailable_message">Delivery is not available for this ZIP code. Mulch must be picked up.</string>
+</resources>

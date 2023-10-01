@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:background="#CCCCCC"
+        android:text="Select Mulch Type"
+        android:textSize="36sp" />
+
+
+    <ScrollView
+        android:layout_width="381dp"
+        android:layout_height="540dp"
+        android:layout_weight="1">
+
+        <RadioGroup
+            android:id="@+id/mulchTypesRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Premium Bark Mulch \n$56/ per cubic yard" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="Special Blend \n$35/ per cubic yard" />
+            />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Triple Ground \n$40/ per cubic yard" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="Chocolate Dyed \n$38/ per cubic yard" />
+            />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Red Dyed \n$38/ per cubic yard" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="Black Dyed \n$38/ per cubic yard" />
+            />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Play Mat \n$38/ per cubic yard" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCCCCC"
+                android:text="Cedar \n$38/ per cubic yard" />
+            />
+        </RadioGroup>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="24dp"
+        android:text="Next" />
+</LinearLayout>

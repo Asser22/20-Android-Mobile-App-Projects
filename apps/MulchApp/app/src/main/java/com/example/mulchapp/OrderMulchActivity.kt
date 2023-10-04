@@ -1,4 +1,4 @@
-package com.asser.mulchmobileapp
+package com.example.mulchapp
 
 import android.content.Intent
 import android.os.Bundle

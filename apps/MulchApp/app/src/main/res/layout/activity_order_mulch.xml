@@ -2,8 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp">
+    android:padding="1dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,43 +15,54 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#D3D3D3"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/mulchTypeTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="36sp"
                 android:layout_marginBottom="16dp" />
 
             <TextView
                 android:id="@+id/pricePerCubicYardTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/CubicYardPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:text="Enter number of cubic yards:"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            />
 
         <EditText
             android:id="@+id/quantityEditText"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="Enter number of cubic yards"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="40dp" />
-
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:hint="0"
+            android:layout_marginBottom="20dp"/>
         <TextView
             android:id="@+id/DeliveryAddress"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Delivery Address"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp" />
+            android:textSize="18sp"
+            android:layout_gravity="left|center_vertical"
+            android:text="Delivery Address"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/streetEditText"
@@ -92,80 +105,92 @@
             android:layout_height="wrap_content"
             android:hint="Phone"
             android:inputType="phone"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="20dp"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:stretchColumns="0"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp">
 
-            <TextView
-                android:id="@+id/mulchCostTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mulch Cost:"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:typeface="monospace" />
+            <TableRow>
+                <TextView
+                    android:text="Mulch Cost:"
+                    android:textStyle="bold"
+                    android:paddingEnd="8dp"/>
 
-            <TextView
-                android:id="@+id/salesTaxTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sales Tax:"
-                app:layout_constraintTop_toBottomOf="@id/mulchCostTextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:typeface="monospace" />
+                <TextView
+                    android:id="@+id/mulchCostTextView"
+                    android:text="$0.00"
+                    android:textStyle="bold"/>
+            </TableRow>
 
-            <TextView
-                android:id="@+id/deliveryChargeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delivery Charge:"
-                app:layout_constraintTop_toBottomOf="@id/salesTaxTextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:typeface="monospace" />
+            <TableRow>
+                <TextView
+                    android:text="Sales Tax:"
+                    android:textStyle="bold"
+                    android:paddingEnd="8dp"/>
 
-            <TextView
-                android:id="@+id/totalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total:"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/deliveryChargeTextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:typeface="monospace"
-                android:layout_marginBottom="25dp" />
+                <TextView
+                    android:id="@+id/salesTaxTextView"
+                    android:text="$0.00"
+                    android:textStyle="bold"/>
+            </TableRow>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TableRow>
+                <TextView
+                    android:text="Delivery Charge:"
+                    android:textStyle="bold"
+                    android:paddingEnd="8dp"/>
 
+                <TextView
+                    android:id="@+id/deliveryChargeTextView"
+                    android:text="$0.00"
+                    android:textStyle="bold"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Total:"
+                    android:textStyle="bold"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/totalTextView"
+                    android:text="$0.00"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="30dp"/>
+            </TableRow>
+        </TableLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true">
 
             <Button
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Back"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="30dp"
-                android:text="Back" />
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"/>
 
             <Button
                 android:id="@+id/nextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Next"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="30dp"
-                android:text="Next" />
-
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"/>
         </RelativeLayout>
+
 
 
 

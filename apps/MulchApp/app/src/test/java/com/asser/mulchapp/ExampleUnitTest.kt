@@ -1,4 +1,4 @@
-package com.example.mulchapp
+package com.asser.mulchapp
 
 import org.junit.Test
 

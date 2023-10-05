@@ -1,4 +1,4 @@
-package com.example.mulchapp
+package com.asser.mulchapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.asser.mulchapp.R
 
 class MainActivity : AppCompatActivity() {
 

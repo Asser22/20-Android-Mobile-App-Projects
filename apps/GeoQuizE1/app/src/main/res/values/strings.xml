@@ -1,20 +1,29 @@
 <resources>
     <string name="app_name">GeoQuizNav</string>
     <string name="question_australia">Canberra is the capital of Australia.</string>
-    <string name="question_oceans">The Pacific Ocean is larger than
-        the Atlantic Ocean.</string>
-    <string name="question_mideast">The Suez Canal connects the Red Sea
-        and the Indian Ocean.</string>
+    <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean.</string>
+    <string name="question_mideast">The Suez Canal connects the Red Sea and the Indian Ocean.</string>
     <string name="question_africa">The source of the Nile River is in Egypt.</string>
-    <string name="question_americas">The Amazon River is the longest river
-        in the Americas.</string>
-    <string name="question_asia">Lake Baikal is the world\'s oldest and deepest
-        freshwater lake.</string>
+    <string name="question_americas">The Amazon River is the longest river in the Americas.</string>
+    <string name="question_asia">Lake Baikal is the world\'s oldest and deepest freshwater lake.</string>
+    <string name="question_europe">Mount Elbrus is the highest peak in Europe.</string>
+    <string name="question_antarctica">Antarctica is the largest desert in the world.</string>
+    <string name="question_north_america">Death Valley is the lowest point in North America.</string>
+    <string name="question_south_america">The Atacama Desert is located in Colombia.</string>
+    <string name="question_russia">Russia spans more time zones than any other country.</string>
+    <string name="question_asia_rivers">The Yangtze is the longest river in Asia.</string>
+    <string name="question_africa_desert">The Sahara is the largest hot desert in the world.</string>
+    <string name="question_europe_union">Norway is a member of the European Union.</string>
+    <string name="question_middle_east">The Dead Sea is the lowest point on Earths surface.</string>
+    <string name="question_global_population">Asia is home to more than half of the worlds population.</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
     <string name="next_button">Next</string>
+    <string name="prev_button">Previous</string>
+    <string name="quiz_score">%1$d out of %2$d correct. %3$d%% Score.</string>
+
 
     <string name="warning_text">Are you sure you want to do this?</string>
     <string name="show_answer_button">Show Answer</string>

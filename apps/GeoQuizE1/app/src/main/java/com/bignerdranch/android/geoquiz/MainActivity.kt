@@ -19,7 +19,7 @@ const val EXTRA_ANSWER_SHOWN = "com.bignerdranch.android.geoquiz.answer_shown"
 const val REQUEST_CODE_CHEAT = 0
 
 
-class MainActivity : AppCompatActivity(), QuestionFragment.QuestionActions, CheatFragment.CheatFragmentCallback {
+class MainActivity : AppCompatActivity(), CheatFragment.CheatFragmentCallback {
 
     private lateinit var binding: ActivityMainBinding
     private val questionBank = listOf(
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), QuestionFragment.QuestionActions, Chea
     private var currentIndex = 0
     private var isCheater = false
 
-    override fun onCheatRequested() {
+    fun onCheatRequested() {
         val fragment = CheatFragment().apply {
             arguments = Bundle().apply {
                 putBoolean(EXTRA_ANSWER_KEY, questionBank[currentIndex].answer)
@@ -46,12 +46,12 @@ class MainActivity : AppCompatActivity(), QuestionFragment.QuestionActions, Chea
     }
 
     // Provide the current isCheater state to the QuestionFragment
-    override fun getIsCheater(): Boolean {
+    fun getIsCheater(): Boolean {
         return isCheater
     }
 
     // Allow the QuestionFragment to update the isCheater state
-    override fun setIsCheater(value: Boolean) {
+    fun setIsCheater(value: Boolean) {
         isCheater = value
     }
 

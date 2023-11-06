@@ -1,20 +1,20 @@
 package com.bignerdranch.android.geoquiz
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.geoquiz.databinding.FragmentQuestionBinding
 
-class QuestionFragment : Fragment(),CheatFragment.CheatFragmentCallback {
+class QuestionFragment : Fragment() {
+
     private var _binding: FragmentQuestionBinding? = null
     private val binding get() = _binding!!
+
+    // Updated Question data class to include user's answer
+    data class Question(val textResId: Int, val answer: Boolean, var userAnswer: Boolean? = null)
 
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
@@ -23,18 +23,29 @@ class QuestionFragment : Fragment(),CheatFragment.CheatFragmentCallback {
         Question(R.string.question_africa, false),
         Question(R.string.question_americas, true),
         Question(R.string.question_asia, true),
+        // Add new questions here
+        Question(R.string.question_europe, true),
+        Question(R.string.question_antarctica, true),
+        Question(R.string.question_north_america, true),
+        Question(R.string.question_south_america, false),
+        Question(R.string.question_russia, true),
+        Question(R.string.question_asia_rivers, true),
+        Question(R.string.question_africa_desert, true),
+        Question(R.string.question_europe_union, false),
+        Question(R.string.question_middle_east, true),
+        Question(R.string.question_global_population, true)
     )
 
     private var currentIndex = 0
+    private var correctAnswersCount = 0
     private var isCheater = false
+    private var answerState = BooleanArray(questionBank.size) { false }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentQuestionBinding.inflate(inflater, container, false)
-
-        updateQuestion()
 
         binding.trueButton.setOnClickListener {
             checkAnswer(true)
@@ -45,57 +56,74 @@ class QuestionFragment : Fragment(),CheatFragment.CheatFragmentCallback {
         }
 
         binding.nextButton.setOnClickListener {
-            currentIndex = (currentIndex + 1) % questionBank.size
-            (activity as? QuestionActions)?.setIsCheater(false) // Reset the isCheater flag when moving to the next question
-            updateQuestion()
+            goToNextQuestion()
         }
 
-
+        binding.prevButton.setOnClickListener {
+            goToPreviousQuestion()
+        }
 
         binding.cheatButton.setOnClickListener {
-            val action = QuestionFragmentDirections.actionQuestionFragmentToCheatFragment(questionBank[currentIndex].answer)
-            findNavController().navigate(action)
-            (activity as? QuestionActions)?.setIsCheater(true)
+            // Handle cheating here
+            isCheater = true
         }
 
+        binding.questionText.setOnClickListener {
+            goToNextQuestion()
+        }
+
+        updateQuestion()
         return binding.root
     }
 
     private fun updateQuestion() {
-        binding.questionText.setText(questionBank[currentIndex].testResId)
+        val question = questionBank[currentIndex].textResId
+        binding.questionText.setText(question)
+        binding.trueButton.isEnabled = !answerState[currentIndex]
+        binding.falseButton.isEnabled = !answerState[currentIndex]
     }
 
-    override fun onCheatActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode != Activity.RESULT_OK) return
-        if (requestCode == REQUEST_CODE_CHEAT) {
-            val didCheat = data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
-            (activity as? QuestionActions)?.setIsCheater(didCheat)
-        }
+    private fun goToNextQuestion() {
+        currentIndex = (currentIndex + 1) % questionBank.size
+        isCheater = false
+        updateQuestion()
+    }
+
+    private fun goToPreviousQuestion() {
+        currentIndex = if (currentIndex - 1 >= 0) currentIndex - 1 else questionBank.size - 1
+        updateQuestion()
     }
 
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = questionBank[currentIndex].answer
-        val didCheat = (activity as? QuestionActions)?.getIsCheater() ?: false
-        val resId = when {
-            didCheat -> R.string.judgment_toast
-            userAnswer == correctAnswer -> R.string.correct_toast
+        answerState[currentIndex] = true
+
+        val messageResId = when {
+            isCheater -> R.string.judgment_toast
+            userAnswer == correctAnswer -> {
+                correctAnswersCount++
+                R.string.correct_toast
+            }
             else -> R.string.incorrect_toast
         }
 
-        Toast.makeText(requireContext(), resId, Toast.LENGTH_SHORT).show()
-    }
+        Toast.makeText(requireContext(), messageResId, Toast.LENGTH_SHORT).show()
+        binding.trueButton.isEnabled = false
+        binding.falseButton.isEnabled = false
 
-
-    interface QuestionActions {
-        fun onCheatRequested()
-        fun getIsCheater(): Boolean
-        fun setIsCheater(value: Boolean)
+        if (answerState.all { it }) {
+            val score = correctAnswersCount * 100 / questionBank.size
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.quiz_score, correctAnswersCount, questionBank.size, score),
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }
+

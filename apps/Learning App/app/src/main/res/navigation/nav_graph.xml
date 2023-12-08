@@ -1,0 +1,19 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.asser.learningapp.ui.MainFragment"
+        android:label="main_fragment_label">
+        <action
+            android:id="@+id/action_mainFragment_to_subjectDetailFragment"
+            app:destination="@id/subjectDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjectDetailFragment"
+        android:name="com.asser.learningapp.ui.SubjectDetailFragment"
+        android:label="subject_detail_fragment_label" />
+</navigation>

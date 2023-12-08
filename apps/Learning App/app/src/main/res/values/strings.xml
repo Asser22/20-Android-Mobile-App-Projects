@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Learning App</string>
+
+    <!-- Strings for MainActivity -->
+    <string name="title_main_activity">Subjects</string>
+    <string name="hint_add_new_subject">Add New Subject</string>
+
+    <!-- Strings for SubjectDetailActivity -->
+    <string name="title_subject_detail_activity">Subject Details</string>
+    <string name="hint_add_new_subtopic">Add New Subtopic</string>
+    <string name="back_to_subjects">Back to Subjects</string>
+
+    <!-- Strings for NotesActivity -->
+    <string name="title_notes_activity">Notes</string>
+    <string name="hint_enter_notes">Enter your notes here</string>
+    <string name="action_save">Save</string>
+    <string name="notes_saved_confirmation">Notes Saved</string>
+
+    <!-- Common Strings -->
+    <string name="action_add">Add</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Error Messages -->
+    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_input">Invalid input</string>
+
+    <!-- Other UI Texts -->
+    <string name="loading">Loading...</string>
+
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="no_subjects">No Subjects</string>
+    <string name="explore_subjects">Explore Subjects</string>
+
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Headline TextView -->
+    <TextView
+        android:id="@+id/tvNotesHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notes"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- EditText for taking notes -->
+    <EditText
+        android:id="@+id/notesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNotesHeadline"
+        android:hint="Enter your notes here"
+        android:textColor="@android:color/white"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:minHeight="300dp"
+        android:scrollbars="vertical"
+        android:padding="8dp" /> <!-- Added padding for better UX -->
+
+    <!-- Save Button is removed as autosave is implemented -->
+
+</RelativeLayout>

@@ -89,6 +89,8 @@ A utility app for garden enthusiasts to calculate the amount of mulch needed for
 A console-based version of the MulchApp, focusing on backend logic and command-line interface.
 
 
+## Contributing
+
 Contributions are welcome! If you have an idea for a new project or improvements for existing ones, please open an issue or submit a pull request.
 
 1. Fork the repository.
